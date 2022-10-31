@@ -11,12 +11,12 @@ jobs:
   preview-environment:
     name: "Build and Deploy Preview Environment"
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./infrastructure
     env:
       tfcWorkspaceName: app-demoapp-aws-preview-${{ github.head_ref }}
       tfcOrg: demo-lab-hashicorp
-    defaults:
-      run:
-      working-directory: infrastructure
     steps:
       - name: Checkout
         uses: actions/checkout@v2

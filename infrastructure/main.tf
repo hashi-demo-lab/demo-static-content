@@ -18,7 +18,7 @@ cloud {
       tags = ["hashicupsBackend"]
     }
 }
-
+}
 
 provider "hcp" {}
 
