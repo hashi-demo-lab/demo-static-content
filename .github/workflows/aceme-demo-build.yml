@@ -12,8 +12,12 @@ jobs:
     name: "Build and Deploy Preview Environment"
     runs-on: ubuntu-latest
     env:
-      tfcWorkspaceName: hcup-be-${{ github.head_ref }}
-      tfcOrg: hashicorp-training
+      tfcWorkspaceName: app-demoapp-aws-preview-${{ github.head_ref }}
+      tfcOrg: demo-lab-hashicorp
+
+    defaults:
+      run:
+      working-directory: infrastructure  
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -49,7 +53,7 @@ jobs:
         env:
           OUTPUT: "${{ steps.output.outputs.stdout }}"
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.TOKEN_GIT }}
           script: |
             const output = `#### Preview Environment Outputs 🖌
             \`\`\`
@@ -69,12 +73,3 @@ jobs:
         run: |
           terraform destroy --auto-approve
           curl --header "Authorization: Bearer ${{ secrets.TFC_API_TOKEN }}" --header "Content-Type: application/vnd.api+json" --request DELETE "https://app.terraform.io/api/v2/organizations/${tfcOrg}/workspaces/${tfcWorkspaceName}"
-      # Builds and deploys production environment, similar to preview environment but isProd is set to true
-      # This builds the production environment and does not build any accompanying backend preview resources
-      - name: Build and deploy Prod Environment
-        id: build-deploy-prod-environment
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: |
-          sed -i 's/tags = \["hashicupsBackend"\]/name = "hcup-frontend-vercel"/g' main.tf
-          terraform init -input=false
-          terraform apply --auto-approve -var="is_prod=true"
