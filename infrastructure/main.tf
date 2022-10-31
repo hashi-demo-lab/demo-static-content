@@ -11,13 +11,13 @@ terraform {
     }
   }
 
-cloud {
+  cloud {
     hostname     = "app.terraform.io"
     organization = "demo-lab-hashicorp"
     workspaces {
       tags = ["hashicupsBackend"]
     }
-}
+  }
 }
 
 provider "hcp" {}
