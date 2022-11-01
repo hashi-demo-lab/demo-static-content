@@ -43,7 +43,7 @@ jobs:
         id: output
         if: github.event_name == 'pull_request' && github.event.action != 'closed'
         run: |
-          terraform output public_ip -no-color
+          terraform output public_ip -raw -no-color
         continue-on-error: true
       # Creates comments on pull request with Terraform output
       - name: Create comment with Terraform output
@@ -51,7 +51,6 @@ jobs:
         if: github.event_name == 'pull_request' && github.event.action != 'closed'
         env:
           OUTPUT: "${{ steps.output.outputs.stdout }}"
-          PUBLICIP:
         with:
           github-token: ${{ secrets.TOKEN_GIT }}
           script: |
@@ -80,5 +79,5 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: cypress-io/github-action@v4.2.0
         with:
-          wait-on: 'http://${process.env.OUTPUT}:80'
-          config: baseUrl=http://${process.env.OUTPUT}:80
+          wait-on: 'http://${{ steps.output.outputs.stdout }}:80'
+          config: baseUrl=http://${{ steps.output.outputs.stdout }}:80
