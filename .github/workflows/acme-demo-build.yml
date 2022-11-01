@@ -48,8 +48,13 @@ jobs:
       #Cypress Web testing to validate website online
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Cypress run
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run with env
         uses: cypress-io/github-action@v4
+        with:
+          env: host=13.211.188.107,port=80
+
       # Creates comments on pull request with Terraform output
       - name: Create comment with Terraform output
         uses: actions/github-script@0.9.0
