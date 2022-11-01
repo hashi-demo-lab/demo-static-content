@@ -43,7 +43,7 @@ jobs:
         id: output
         if: github.event_name == 'pull_request' && github.event.action != 'closed'
         run: |
-          terraform output public_ip -raw
+          terraform output -raw public_ip
         continue-on-error: true
       # Creates comments on pull request with Terraform output
       - name: Create comment with Terraform output
