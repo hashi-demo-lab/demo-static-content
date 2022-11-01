@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./infrastructure
+        working-directory: infrastructure
     env:
       tfcWorkspaceName: app-demoapp-aws-preview-${{ github.head_ref }}
       tfcOrg: demo-lab-hashicorp
