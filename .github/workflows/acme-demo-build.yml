@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: infrastructure
+        working-directory: ./infrastructure
     env:
       tfcWorkspaceName: app-demoapp-aws-preview-${{ github.head_ref }}
       tfcOrg: demo-lab-hashicorp
@@ -77,3 +77,5 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v4
+        with:
+          spec: ./cypress/integration/spec1.js
