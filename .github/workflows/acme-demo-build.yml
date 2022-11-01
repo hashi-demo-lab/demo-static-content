@@ -45,6 +45,13 @@ jobs:
         run: |
           terraform output -no-color
         continue-on-error: true
+        #Cypress Web testing to validate website online
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
       # Creates comments on pull request with Terraform output
       - name: Create comment with Terraform output
         uses: actions/github-script@0.9.0
