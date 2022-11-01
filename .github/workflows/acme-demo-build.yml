@@ -73,8 +73,10 @@ jobs:
           terraform destroy --auto-approve
           curl --header "Authorization: Bearer ${{ secrets.TFC_API_TOKEN }}" --header "Content-Type: application/vnd.api+json" --request DELETE "https://app.terraform.io/api/v2/organizations/${tfcOrg}/workspaces/${tfcWorkspaceName}"
       - name: Checkout
+        if: github.event_name == 'pull_request'
         uses: actions/checkout@v2
       - name: Cypress.io
+        if: github.event_name == 'pull_request'
         uses: cypress-io/github-action@v4.2.0
         with:
           wait-on: 'http://${{ steps.output.outputs.public_ip }}:80'
