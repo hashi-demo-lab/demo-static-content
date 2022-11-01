@@ -75,6 +75,10 @@ jobs:
   cypress-run:
     runs-on: ubuntu-20.04
     steps:
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
       - name: Checkout
         uses: actions/checkout@v2
         # Install NPM dependencies, cache them correctly
