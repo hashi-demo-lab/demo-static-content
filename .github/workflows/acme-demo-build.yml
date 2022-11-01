@@ -72,16 +72,14 @@ jobs:
         run: |
           terraform destroy --auto-approve
           curl --header "Authorization: Bearer ${{ secrets.TFC_API_TOKEN }}" --header "Content-Type: application/vnd.api+json" --request DELETE "https://app.terraform.io/api/v2/organizations/${tfcOrg}/workspaces/${tfcWorkspaceName}"
-  cypress-run:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 15
+    cypress-run:
+      name: Cypress run
+      runs-on: ubuntu-20.04
+      steps:
       - name: Checkout
         uses: actions/checkout@v2
-        # Install NPM dependencies, cache them correctly
-        # and run all Cypress tests
+
       - name: Cypress run
         uses: cypress-io/github-action@v4
+        with:
+          spec: cypress/integration/spec1.js
