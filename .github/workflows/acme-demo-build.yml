@@ -74,8 +74,5 @@ jobs:
           curl --header "Authorization: Bearer ${{ secrets.TFC_API_TOKEN }}" --header "Content-Type: application/vnd.api+json" --request DELETE "https://app.terraform.io/api/v2/organizations/${tfcOrg}/workspaces/${tfcWorkspaceName}"
       - name: Checkout
         uses: actions/checkout@v2
-
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
-        with:
-          spec: ./spec1.js
