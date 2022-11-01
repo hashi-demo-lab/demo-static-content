@@ -72,10 +72,6 @@ jobs:
         run: |
           terraform destroy --auto-approve
           curl --header "Authorization: Bearer ${{ secrets.TFC_API_TOKEN }}" --header "Content-Type: application/vnd.api+json" --request DELETE "https://app.terraform.io/api/v2/organizations/${tfcOrg}/workspaces/${tfcWorkspaceName}"
-    cypress-run:
-      name: Cypress run
-      runs-on: ubuntu-20.04
-      steps:
       - name: Checkout
         uses: actions/checkout@v2
 
