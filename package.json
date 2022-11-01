@@ -1,23 +1,24 @@
 {
-    "name": "demo-static-content",
-    "version": "1.0.0",
-    "description": "1",
-    "main": "index.js",
-    "dependencies": {
-      "cypress": "^10.11.0"
-    },
-    "devDependencies": {},
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/hashicorp-demo-lab/demo-static-content.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-      "url": "https://github.com/hashicorp-demo-lab/demo-static-content/issues"
-    },
-    "homepage": "https://github.com/hashicorp-demo-lab/demo-static-content#readme"
+  "name": "test--site",
+  "version": "1.0.0",
+  "description": "E2E tests for site",
+  "private": true,
+  "scripts": {
+    "test": "cypress run",
+    "cy:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/test-personal-site.git"
+  },
+  "keywords": [],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/test-personal-site/issues"
+  },
+  "homepage": "https://github.com/bahmutov/test-personal-site#readme",
+  "devDependencies": {
+    "cypress": "6.4.0"
   }
+}
