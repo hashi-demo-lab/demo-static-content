@@ -78,4 +78,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          spec: ./cypress/integration/spec1.js
+          spec: ./spec1.js
