@@ -115,3 +115,6 @@ jobs:
         with:
           wait-on: 'http://${{ steps.output.outputs.stdout }}:80'
           config: baseUrl=http://${{ steps.output.outputs.stdout }}:80
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ steps.secretdata.outputs.MY_SECRET }}
