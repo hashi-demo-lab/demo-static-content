@@ -79,6 +79,7 @@ jobs:
           - name: Troubleshooting
       - name: Troubleshooting
         run: |
+          echo "$ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL"
           curl -sSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL" | \
           jq "{ jwt: .value, role: \"$VAULT_ROLE\" }" > ./token.json
             
