@@ -1,6 +1,7 @@
 {
-  "baseUrl": "https://glebbahmutov.com",
+  "baseUrl": "",
   "fixturesFolder": false,
   "supportFile": false,
-  "pluginsFile": false
+  "pluginsFile": false,
+  "projectId": "ixc2yv"
 }
